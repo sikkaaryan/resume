@@ -6,7 +6,7 @@ export const profile = {
   phone: "+91 99717 36858",
   github: "https://github.com/sikkaaryan",
   linkedin: "https://www.linkedin.com/in/sikkaaryan6529",
-  resumeUrl: "/Aryan-Sikka-Resume.pdf",
+  resumeUrl: "/Aryan-Sikka-Resume.pdf?v=2026-06b",
   tagline:
     "Software Engineer with ~4 years building production .NET systems and cross-platform mobile game modules. Owns features end-to-end, debugs hard problems, and ships reusable frameworks teams actually use.",
 };
@@ -34,6 +34,8 @@ export const experience: Job[] = [
       "Own core product features end-to-end: game logic, reel/spin mechanics, bonus rounds, UI flows, sound integration, backend data flow, analytics/events, and bug fixes.",
       "Delivered and contributed to 5–6 production game modules including Buffalo Link — math-driven gameplay logic, symbol configuration, payline handling, and game-state behavior.",
       "Built a reusable game template framework (base structure, reel engine, configurable paylines, symbol config, common setup components) that cut new-game development time by ~30%.",
+      "Building internal AI workflows and agent pipelines to automate game code generation — reducing boilerplate work across new modules and accelerating delivery for the team.",
+      "Using AI agents to automate RTP (Return-to-Player) verification and fix common math/logic defects — catching regressions earlier and improving release reliability.",
       "Debugged complex production and QA issues — RTP/math mismatches, game freezes, spin-result mismatches, logic defects, device-specific bugs — improving release quality across modules.",
       "Collaborated with backend, QA, design, art, and product using GitLab, Jira, and GitLab CI/CD; received strong performance rating and manager appreciation for ownership and delivery.",
     ],
@@ -43,6 +45,7 @@ export const experience: Job[] = [
       "Unity",
       "Android",
       "iOS",
+      "AI Agents / Workflows",
       "GitLab CI/CD",
       "Jira",
     ],
@@ -81,6 +84,45 @@ export type Project = {
   link?: string;
 };
 
+export type FeaturedProject = Project & {
+  metric: string;
+  metricLabel: string;
+  accent: "cyan" | "violet" | "emerald";
+};
+
+export const featuredProjects: FeaturedProject[] = [
+  {
+    name: "AI Agent Pipelines",
+    context: "work",
+    description:
+      "Internal AI workflows and agent pipelines that automate game-code generation and RTP/math verification — reducing boilerplate and catching defects earlier.",
+    tags: ["AI Agents", "Workflows", "Automation", "RTP"],
+    metric: "Automated",
+    metricLabel: "code-gen + RTP checks",
+    accent: "violet",
+  },
+  {
+    name: "Buffalo Link",
+    context: "work",
+    description:
+      "Owned key gameplay slices of the Buffalo Link module — symbol configuration, payline handling, and game-state behavior with focus on math correctness and release stability.",
+    tags: ["TypeScript", "Game Logic", "RTP", "Mobile"],
+    metric: "Shipped",
+    metricLabel: "production module · Android + iOS",
+    accent: "cyan",
+  },
+  {
+    name: "Reusable Game Template Framework",
+    context: "work",
+    description:
+      "Internal TypeScript framework: base game shell, configurable reel engine, payline + symbol configuration, and common setup components for every new title.",
+    tags: ["TypeScript", "Framework", "Internal Tools"],
+    metric: "~30%",
+    metricLabel: "faster new-game delivery",
+    accent: "emerald",
+  },
+];
+
 export const projects: Project[] = [
   {
     name: "NFL SB Slots — Game Modules",
@@ -88,20 +130,6 @@ export const projects: Project[] = [
     description:
       "Production slot-game modules shipped to Android and iOS. Implemented reel mechanics, paylines, bonus rounds, and the math-driven gameplay layer wired to backend APIs and analytics events.",
     tags: ["C#", "TypeScript", "Unity", "Mobile"],
-  },
-  {
-    name: "Buffalo Link",
-    context: "work",
-    description:
-      "Owned key gameplay slices of the Buffalo Link module — symbol configuration, payline handling, and game-state behavior — with focus on math correctness and release stability.",
-    tags: ["TypeScript", "Game Logic", "RTP"],
-  },
-  {
-    name: "Reusable Game Template Framework",
-    context: "work",
-    description:
-      "Internal TypeScript framework: base game shell, configurable reel engine, payline + symbol configuration, and common setup components. Cut new-game development time by ~30%.",
-    tags: ["TypeScript", "Framework", "Internal Tools"],
   },
   {
     name: "HRMS Application",
@@ -164,6 +192,15 @@ export const skillGroups: { title: string; items: string[] }[] = [
       "MSSQL",
       "Oracle",
       "IIS",
+    ],
+  },
+  {
+    title: "AI & Automation",
+    items: [
+      "AI agent pipelines",
+      "Workflow automation",
+      "Code-generation tooling",
+      "Automated RTP / math verification",
     ],
   },
   {
