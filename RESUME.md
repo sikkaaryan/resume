@@ -22,6 +22,8 @@ Software Engineer with ~4 years of experience shipping production software acros
 - Own core product features end-to-end: game logic, reel/spin mechanics, bonus rounds, UI flows, sound integration, backend data flow, analytics/events, and bug fixes.
 - Delivered and contributed to **5–6 production game modules**, including **Buffalo Link**, implementing math-driven gameplay logic, symbol configuration, payline handling, and game-state behavior.
 - Built a **reusable game template framework** (base structure, reel engine, configurable paylines, symbol config, common setup components), cutting new-game development time by **~30%**.
+- Building internal **AI workflows and agent pipelines** to automate game code generation — reducing boilerplate work across new modules and accelerating delivery for the team.
+- Using **AI agents** to automate **RTP (Return-to-Player) verification** and fix common math/logic defects — catching regressions earlier and improving release reliability.
 - Debugged complex production and QA issues — RTP/math mismatches, game freezes, spin-result mismatches, logic defects, device-specific bugs — improving release quality across modules.
 - Collaborated with backend, QA, design, art, and product using **GitLab, Jira, GitLab CI/CD**; received strong performance rating and manager appreciation for ownership and delivery.
 
@@ -60,6 +62,7 @@ Predictive model for a bank's customer churn rate, covering data exploration, fe
 **Frameworks & Runtimes:** .NET / .NET Core, ASP.NET MVC, Entity Framework, Unity, React
 **Mobile & Game:** Unity-based architecture, Android, iOS, reel/spin mechanics, payline systems, game configuration
 **Backend & Data:** REST / SOAP web services, WCF, MSSQL, Oracle, IIS
+**AI & Automation:** AI agent pipelines, workflow automation, code-generation tooling, automated RTP / math verification
 **Practices:** SOLID, Design Patterns, IoC / Dependency Injection, Authentication & Authorization, SDLC, Multithreading
 **Tooling:** Git, GitLab, GitLab CI/CD, Jira, JMeter
 

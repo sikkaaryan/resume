@@ -4,101 +4,296 @@
     <meta charset="utf-8" />
     <title>Aryan Sikka — Resume</title>
     <style>
-      @page { size: A4; margin: 14mm 16mm; }
+      :root {
+        --ink: #14181f;
+        --body: #2b3038;
+        --muted: #6b7280;
+        --soft: #98a0ad;
+        --line: #e1e5eb;
+        --line-soft: #eef1f5;
+        --accent: #0b6fb8;
+        --accent-soft: #e7f0f8;
+        --bg-soft: #f7f9fc;
+      }
+      @page { size: A4; margin: 12mm 14mm 14mm 14mm; }
       * { box-sizing: border-box; }
-      html, body { margin: 0; padding: 0; }
+      html, body { margin: 0; padding: 0; background: #fff; }
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        color: #1a1d23;
-        font-size: 10.5pt;
-        line-height: 1.45;
-        background: #fff;
-      }
-      a { color: #0b6fb8; text-decoration: none; }
-      header { border-bottom: 1.5pt solid #1a1d23; padding-bottom: 8pt; margin-bottom: 12pt; }
-      h1 { font-size: 22pt; margin: 0 0 2pt 0; letter-spacing: -0.3pt; }
-      .role-line { font-size: 10.5pt; color: #4a525e; margin: 0 0 6pt 0; }
-      .contact {
-        font-size: 9.5pt; color: #2b3038; display: flex; flex-wrap: wrap;
-        gap: 4pt 10pt;
-      }
-      .contact span.sep { color: #b8bec7; }
-      h2 {
-        font-size: 11pt; text-transform: uppercase; letter-spacing: 1pt;
-        color: #0b6fb8; margin: 14pt 0 6pt 0; padding-bottom: 3pt;
-        border-bottom: 0.6pt solid #d6dae0;
-      }
-      h3 { font-size: 11pt; margin: 8pt 0 1pt 0; }
-      .meta { font-size: 9.5pt; color: #6b7380; margin: 0 0 4pt 0; }
-      p { margin: 0 0 6pt 0; }
-      ul { margin: 4pt 0 0 0; padding-left: 14pt; }
-      li { margin: 0 0 3pt 0; }
-      .summary { margin-bottom: 4pt; }
-      .blurb { font-style: italic; color: #5b6471; margin: 2pt 0 4pt 0; font-size: 10pt; }
-      .job + .job { margin-top: 10pt; }
-      .grid {
-        display: grid; grid-template-columns: 130pt 1fr; gap: 4pt 12pt;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: var(--body);
         font-size: 10pt;
+        line-height: 1.5;
       }
-      .grid dt { color: #0b6fb8; font-weight: 600; }
-      .grid dd { margin: 0; }
-      .compact-list { margin: 0; padding-left: 14pt; font-size: 10pt; }
-      .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
-      .row .right { color: #6b7380; font-size: 9.5pt; white-space: nowrap; }
-      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+      a { color: var(--accent); text-decoration: none; }
+
+      /* ─── Header ─────────────────────────── */
+      .header {
+        display: flex;
+        align-items: stretch;
+        gap: 12pt;
+        padding-bottom: 10pt;
+        border-bottom: 0.7pt solid var(--line);
+        margin-bottom: 14pt;
+      }
+      .header .bar {
+        width: 4pt;
+        background: linear-gradient(180deg, var(--accent) 0%, #1e88c7 100%);
+        border-radius: 2pt;
+        flex: none;
+      }
+      .header .name-block { flex: 1; }
+      h1 {
+        font-size: 26pt;
+        font-weight: 800;
+        letter-spacing: -0.6pt;
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.05;
+      }
+      .role-line {
+        font-size: 10.5pt;
+        color: var(--muted);
+        margin: 3pt 0 8pt 0;
+        font-weight: 500;
+      }
+      .role-line strong { color: var(--ink); font-weight: 600; }
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4pt 12pt;
+        font-size: 9pt;
+        color: var(--body);
+      }
+      .contact .sep { color: var(--soft); }
+
+      /* ─── Section ───────────────────────── */
+      section { margin-top: 12pt; }
+      h2 {
+        font-size: 9.5pt;
+        text-transform: uppercase;
+        letter-spacing: 1.6pt;
+        color: var(--accent);
+        margin: 0 0 8pt 0;
+        font-weight: 700;
+        padding-bottom: 4pt;
+        border-bottom: 1.2pt solid var(--accent-soft);
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1.2pt;
+        width: 22pt;
+        height: 1.2pt;
+        background: var(--accent);
+      }
+
+      /* ─── Summary ───────────────────────── */
+      .summary { color: var(--body); font-size: 10pt; }
+
+      /* ─── Experience ───────────────────── */
+      .job + .job { margin-top: 11pt; }
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12pt;
+        margin: 0 0 1pt 0;
+      }
+      h3 {
+        font-size: 11pt;
+        margin: 0;
+        color: var(--ink);
+        font-weight: 700;
+      }
+      h3 .org { color: var(--accent); font-weight: 600; }
+      .when {
+        color: var(--muted);
+        font-size: 9pt;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+      .blurb {
+        color: var(--muted);
+        font-style: italic;
+        font-size: 9.5pt;
+        margin: 2pt 0 4pt 0;
+      }
+      ul.bullets {
+        list-style: none;
+        padding: 0;
+        margin: 5pt 0 0 0;
+      }
+      ul.bullets li {
+        position: relative;
+        padding-left: 11pt;
+        margin: 0 0 3pt 0;
+        font-size: 10pt;
+        line-height: 1.5;
+      }
+      ul.bullets li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5.5pt;
+        width: 3.5pt;
+        height: 3.5pt;
+        background: var(--accent);
+        border-radius: 1pt;
+      }
+      .ai-bullet::before { background: #7c3aed !important; }
+
+      /* ─── Projects ─────────────────────── */
+      .project + .project { margin-top: 8pt; }
+      .project-head {
+        display: flex;
+        align-items: baseline;
+        gap: 6pt;
+        margin-bottom: 1pt;
+      }
+      .project-head h3 { font-size: 10.5pt; }
+      .badge {
+        font-size: 7.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.8pt;
+        color: var(--accent);
+        background: var(--accent-soft);
+        padding: 1pt 5pt;
+        border-radius: 2pt;
+        font-weight: 600;
+      }
+      .badge.work { background: #fef3c7; color: #8a5a00; }
+      .badge.personal { background: var(--line-soft); color: var(--muted); }
+      .project p { margin: 1pt 0 0 0; font-size: 9.5pt; color: var(--body); }
+
+      /* ─── Skills ───────────────────────── */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: 110pt 1fr;
+        gap: 6pt 12pt;
+        font-size: 9.5pt;
+        align-items: start;
+      }
+      .skill-grid dt {
+        color: var(--ink);
+        font-weight: 600;
+        padding-top: 2pt;
+      }
+      .skill-grid dd { margin: 0; display: flex; flex-wrap: wrap; gap: 3pt; }
+      .pill {
+        display: inline-block;
+        font-size: 8.8pt;
+        padding: 1.5pt 6pt;
+        border: 0.5pt solid var(--line);
+        border-radius: 9pt;
+        color: var(--body);
+        background: #fff;
+        line-height: 1.3;
+      }
+      .pill.ai {
+        border-color: #d8caf6;
+        background: #f5f0ff;
+        color: #5b21b6;
+      }
+
+      /* ─── Footer row ───────────────────── */
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16pt;
+      }
+      .meta {
+        font-size: 9pt;
+        color: var(--muted);
+        margin: 1pt 0 0 0;
+      }
+      .compact-list {
+        list-style: none;
+        padding: 0;
+        margin: 4pt 0 0 0;
+      }
+      .compact-list li {
+        position: relative;
+        padding-left: 9pt;
+        font-size: 9.5pt;
+        margin-bottom: 2pt;
+      }
+      .compact-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5pt;
+        width: 3pt;
+        height: 3pt;
+        border-radius: 50%;
+        background: var(--accent);
+      }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Aryan Sikka</h1>
-      <p class="role-line">Software Engineer II · Noida, India</p>
-      <div class="contact">
-        <a href="mailto:sikkaaryan8816@gmail.com">sikkaaryan8816@gmail.com</a>
-        <span class="sep">·</span>
-        <span>+91 99717 36858</span>
-        <span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/sikkaaryan6529">linkedin.com/in/sikkaaryan6529</a>
-        <span class="sep">·</span>
-        <a href="https://github.com/sikkaaryan">github.com/sikkaaryan</a>
+    <!-- ─── Header ──────────────────────────────────── -->
+    <header class="header">
+      <div class="bar"></div>
+      <div class="name-block">
+        <h1>Aryan Sikka</h1>
+        <p class="role-line">
+          <strong>Software Engineer II</strong> · Noida, India
+        </p>
+        <div class="contact">
+          <a href="mailto:sikkaaryan8816@gmail.com">sikkaaryan8816@gmail.com</a>
+          <span class="sep">·</span>
+          <span>+91 99717 36858</span>
+          <span class="sep">·</span>
+          <a href="https://www.linkedin.com/in/sikkaaryan6529">linkedin.com/in/sikkaaryan6529</a>
+          <span class="sep">·</span>
+          <a href="https://github.com/sikkaaryan">github.com/sikkaaryan</a>
+        </div>
       </div>
     </header>
 
+    <!-- ─── Summary ─────────────────────────────────── -->
     <section>
       <h2>Summary</h2>
       <p class="summary">
-        Software Engineer with ~4 years shipping production software across two domains —
-        enterprise .NET observability tooling at Cavisson Systems, and cross-platform mobile
-        game modules at Aristocrat Technologies. Strong in C#, TypeScript, and Unity-based
-        architectures, with a track record of owning features end-to-end, debugging hard
-        production issues, and building reusable frameworks that cut team delivery time.
+        Software Engineer with ~4 years shipping production software across two domains — enterprise
+        .NET observability tooling at Cavisson Systems, and cross-platform mobile game modules at
+        Aristocrat Technologies. Strong in C#, TypeScript, and Unity-based architectures, with a
+        track record of owning features end-to-end, debugging hard production issues, building
+        reusable frameworks, and driving <strong>AI-powered automation</strong> for code generation
+        and game-math verification.
       </p>
     </section>
 
+    <!-- ─── Experience ──────────────────────────────── -->
     <section>
       <h2>Experience</h2>
 
       <div class="job">
-        <div class="row">
-          <h3>Software Engineer II · Aristocrat Technologies</h3>
-          <span class="right">Oct 2024 — Present · Noida, India</span>
+        <div class="job-head">
+          <h3>Software Engineer II <span class="org">· Aristocrat Technologies</span></h3>
+          <span class="when">Oct 2024 — Present · Noida, India</span>
         </div>
-        <ul>
+        <ul class="bullets">
           <li>Develop production mobile game modules for <strong>NFL SB Slots</strong> (Android + iOS) using C#, TypeScript, Unity-based architecture, backend API integration, and configuration-driven logic.</li>
           <li>Own core product features end-to-end: game logic, reel/spin mechanics, bonus rounds, UI flows, sound integration, backend data flow, analytics/events, and bug fixes.</li>
           <li>Delivered and contributed to <strong>5–6 production game modules</strong> including <strong>Buffalo Link</strong> — math-driven gameplay logic, symbol configuration, payline handling, and game-state behavior.</li>
           <li>Built a <strong>reusable game template framework</strong> (base structure, reel engine, configurable paylines, symbol config, common setup components) that cut new-game development time by <strong>~30%</strong>.</li>
+          <li class="ai-bullet">Building internal <strong>AI workflows and agent pipelines</strong> to automate game code generation — reducing boilerplate work across new modules and accelerating delivery for the team.</li>
+          <li class="ai-bullet">Using <strong>AI agents</strong> to automate <strong>RTP (Return-to-Player) verification</strong> and fix common math/logic defects — catching regressions earlier and improving release reliability.</li>
           <li>Debugged complex production and QA issues — RTP/math mismatches, game freezes, spin-result mismatches, logic defects, device-specific bugs — improving release quality across modules.</li>
           <li>Collaborated with backend, QA, design, art, and product using GitLab, Jira, and GitLab CI/CD; received strong performance rating and manager appreciation for ownership and delivery.</li>
         </ul>
       </div>
 
       <div class="job">
-        <div class="row">
-          <h3>Software Engineer · Cavisson Systems Inc</h3>
-          <span class="right">Jul 2022 — Oct 2024 · Noida, India</span>
+        <div class="job-head">
+          <h3>Software Engineer <span class="org">· Cavisson Systems Inc</span></h3>
+          <span class="when">Jul 2022 — Oct 2024 · Noida, India</span>
         </div>
-        <p class="blurb">Enterprise performance testing, monitoring, and diagnostics software (NetDiagnostics — comparable to Dynatrace, New Relic, Datadog).</p>
-        <ul>
+        <p class="blurb">Enterprise performance testing, monitoring &amp; diagnostics software (NetDiagnostics — comparable to Dynatrace, New Relic, Datadog).</p>
+        <ul class="bullets">
           <li>Debugged and enhanced ASP.NET MVC and ASP.NET Core MVC applications to improve performance and functionality.</li>
           <li>Implemented Entity Framework within MVC applications and applied design patterns (IoC, DIP, SOLID) to improve architecture and decoupling.</li>
           <li>Built and maintained .NET and .NET Core applications backed by MSSQL and Oracle.</li>
@@ -108,46 +303,81 @@
       </div>
     </section>
 
+    <!-- ─── Projects ────────────────────────────────── -->
     <section>
-      <h2>Projects</h2>
-      <div class="job">
-        <h3>Reusable Game Template Framework <span style="font-weight:400;color:#6b7380;font-size:9.5pt;">· internal</span></h3>
+      <h2>Selected Projects</h2>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Reusable Game Template Framework</h3>
+          <span class="badge work">work · internal</span>
+        </div>
         <p>TypeScript framework with base game shell, configurable reel engine, payline + symbol configuration, and common setup components. Reduced new-game development time by ~30%.</p>
       </div>
-      <div class="job">
-        <h3>HRMS Application</h3>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>HRMS Application</h3>
+          <span class="badge personal">personal</span>
+        </div>
         <p>Internal HR system — leave application with email notifications, employee activity tracking, admin approval flow, and a LAN-based employee chat module.</p>
       </div>
-      <div class="job">
-        <h3>Customer Churn Prediction</h3>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>Customer Churn Prediction</h3>
+          <span class="badge personal">personal</span>
+        </div>
         <p>Predictive model for a bank's customer churn rate. Covered data exploration, feature engineering, and supervised model comparison.</p>
       </div>
     </section>
 
+    <!-- ─── Skills ──────────────────────────────────── -->
     <section>
       <h2>Skills</h2>
-      <dl class="grid">
+      <dl class="skill-grid">
         <dt>Languages</dt>
-        <dd>C#, TypeScript, JavaScript, C, C++, Python, Java, SQL, HTML, CSS</dd>
+        <dd>
+          <span class="pill">C#</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">C</span><span class="pill">C++</span><span class="pill">Python</span><span class="pill">Java</span><span class="pill">SQL</span><span class="pill">HTML</span><span class="pill">CSS</span>
+        </dd>
+
         <dt>Frameworks &amp; Runtimes</dt>
-        <dd>.NET / .NET Core, ASP.NET MVC, Entity Framework, Unity, React</dd>
+        <dd>
+          <span class="pill">.NET / .NET Core</span><span class="pill">ASP.NET MVC</span><span class="pill">Entity Framework</span><span class="pill">Unity</span><span class="pill">React</span>
+        </dd>
+
         <dt>Mobile &amp; Game</dt>
-        <dd>Unity architecture, Android, iOS, reel/spin mechanics, payline systems, game configuration</dd>
+        <dd>
+          <span class="pill">Unity architecture</span><span class="pill">Android</span><span class="pill">iOS</span><span class="pill">Reel / spin mechanics</span><span class="pill">Payline systems</span><span class="pill">Game configuration</span>
+        </dd>
+
         <dt>Backend &amp; Data</dt>
-        <dd>REST / SOAP, WCF, MSSQL, Oracle, IIS</dd>
+        <dd>
+          <span class="pill">REST / SOAP</span><span class="pill">WCF</span><span class="pill">MSSQL</span><span class="pill">Oracle</span><span class="pill">IIS</span>
+        </dd>
+
+        <dt>AI &amp; Automation</dt>
+        <dd>
+          <span class="pill ai">AI agent pipelines</span><span class="pill ai">Workflow automation</span><span class="pill ai">Code-generation tooling</span><span class="pill ai">Automated RTP / math verification</span>
+        </dd>
+
         <dt>Practices</dt>
-        <dd>SOLID, Design Patterns, IoC / Dependency Injection, Auth / Authorization, SDLC, Multithreading</dd>
+        <dd>
+          <span class="pill">SOLID</span><span class="pill">Design Patterns</span><span class="pill">IoC / DI</span><span class="pill">Auth / Authorization</span><span class="pill">SDLC</span><span class="pill">Multithreading</span>
+        </dd>
+
         <dt>Tooling</dt>
-        <dd>Git, GitLab, GitLab CI/CD, Jira, JMeter</dd>
+        <dd>
+          <span class="pill">Git</span><span class="pill">GitLab</span><span class="pill">GitLab CI/CD</span><span class="pill">Jira</span><span class="pill">JMeter</span>
+        </dd>
       </dl>
     </section>
 
+    <!-- ─── Education + Certifications ───────────────── -->
     <section class="two-col">
       <div>
         <h2>Education</h2>
-        <div class="row">
-          <h3>B.Tech · GGSIP University</h3>
-        </div>
+        <h3 style="font-size:10.5pt;margin-top:2pt;">B.Tech <span class="org">· GGSIP University</span></h3>
         <p class="meta">Aug 2018 — May 2022 · New Delhi · 80%</p>
       </div>
       <div>
