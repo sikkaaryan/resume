@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Aryan Sikka — Resume</title>
+    <style>
+      @page { size: A4; margin: 14mm 16mm; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #1a1d23;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        background: #fff;
+      }
+      a { color: #0b6fb8; text-decoration: none; }
+      header { border-bottom: 1.5pt solid #1a1d23; padding-bottom: 8pt; margin-bottom: 12pt; }
+      h1 { font-size: 22pt; margin: 0 0 2pt 0; letter-spacing: -0.3pt; }
+      .role-line { font-size: 10.5pt; color: #4a525e; margin: 0 0 6pt 0; }
+      .contact {
+        font-size: 9.5pt; color: #2b3038; display: flex; flex-wrap: wrap;
+        gap: 4pt 10pt;
+      }
+      .contact span.sep { color: #b8bec7; }
+      h2 {
+        font-size: 11pt; text-transform: uppercase; letter-spacing: 1pt;
+        color: #0b6fb8; margin: 14pt 0 6pt 0; padding-bottom: 3pt;
+        border-bottom: 0.6pt solid #d6dae0;
+      }
+      h3 { font-size: 11pt; margin: 8pt 0 1pt 0; }
+      .meta { font-size: 9.5pt; color: #6b7380; margin: 0 0 4pt 0; }
+      p { margin: 0 0 6pt 0; }
+      ul { margin: 4pt 0 0 0; padding-left: 14pt; }
+      li { margin: 0 0 3pt 0; }
+      .summary { margin-bottom: 4pt; }
+      .blurb { font-style: italic; color: #5b6471; margin: 2pt 0 4pt 0; font-size: 10pt; }
+      .job + .job { margin-top: 10pt; }
+      .grid {
+        display: grid; grid-template-columns: 130pt 1fr; gap: 4pt 12pt;
+        font-size: 10pt;
+      }
+      .grid dt { color: #0b6fb8; font-weight: 600; }
+      .grid dd { margin: 0; }
+      .compact-list { margin: 0; padding-left: 14pt; font-size: 10pt; }
+      .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+      .row .right { color: #6b7380; font-size: 9.5pt; white-space: nowrap; }
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Aryan Sikka</h1>
+      <p class="role-line">Software Engineer II · Noida, India</p>
+      <div class="contact">
+        <a href="mailto:sikkaaryan8816@gmail.com">sikkaaryan8816@gmail.com</a>
+        <span class="sep">·</span>
+        <span>+91 99717 36858</span>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/sikkaaryan6529">linkedin.com/in/sikkaaryan6529</a>
+        <span class="sep">·</span>
+        <a href="https://github.com/sikkaaryan">github.com/sikkaaryan</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">
+        Software Engineer with ~4 years shipping production software across two domains —
+        enterprise .NET observability tooling at Cavisson Systems, and cross-platform mobile
+        game modules at Aristocrat Technologies. Strong in C#, TypeScript, and Unity-based
+        architectures, with a track record of owning features end-to-end, debugging hard
+        production issues, and building reusable frameworks that cut team delivery time.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="row">
+          <h3>Software Engineer II · Aristocrat Technologies</h3>
+          <span class="right">Oct 2024 — Present · Noida, India</span>
+        </div>
+        <ul>
+          <li>Develop production mobile game modules for <strong>NFL SB Slots</strong> (Android + iOS) using C#, TypeScript, Unity-based architecture, backend API integration, and configuration-driven logic.</li>
+          <li>Own core product features end-to-end: game logic, reel/spin mechanics, bonus rounds, UI flows, sound integration, backend data flow, analytics/events, and bug fixes.</li>
+          <li>Delivered and contributed to <strong>5–6 production game modules</strong> including <strong>Buffalo Link</strong> — math-driven gameplay logic, symbol configuration, payline handling, and game-state behavior.</li>
+          <li>Built a <strong>reusable game template framework</strong> (base structure, reel engine, configurable paylines, symbol config, common setup components) that cut new-game development time by <strong>~30%</strong>.</li>
+          <li>Debugged complex production and QA issues — RTP/math mismatches, game freezes, spin-result mismatches, logic defects, device-specific bugs — improving release quality across modules.</li>
+          <li>Collaborated with backend, QA, design, art, and product using GitLab, Jira, and GitLab CI/CD; received strong performance rating and manager appreciation for ownership and delivery.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="row">
+          <h3>Software Engineer · Cavisson Systems Inc</h3>
+          <span class="right">Jul 2022 — Oct 2024 · Noida, India</span>
+        </div>
+        <p class="blurb">Enterprise performance testing, monitoring, and diagnostics software (NetDiagnostics — comparable to Dynatrace, New Relic, Datadog).</p>
+        <ul>
+          <li>Debugged and enhanced ASP.NET MVC and ASP.NET Core MVC applications to improve performance and functionality.</li>
+          <li>Implemented Entity Framework within MVC applications and applied design patterns (IoC, DIP, SOLID) to improve architecture and decoupling.</li>
+          <li>Built and maintained .NET and .NET Core applications backed by MSSQL and Oracle.</li>
+          <li>Conducted JMeter load testing to evaluate software performance under various conditions.</li>
+          <li>Used Git / GitLab for version control across team projects.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="job">
+        <h3>Reusable Game Template Framework <span style="font-weight:400;color:#6b7380;font-size:9.5pt;">· internal</span></h3>
+        <p>TypeScript framework with base game shell, configurable reel engine, payline + symbol configuration, and common setup components. Reduced new-game development time by ~30%.</p>
+      </div>
+      <div class="job">
+        <h3>HRMS Application</h3>
+        <p>Internal HR system — leave application with email notifications, employee activity tracking, admin approval flow, and a LAN-based employee chat module.</p>
+      </div>
+      <div class="job">
+        <h3>Customer Churn Prediction</h3>
+        <p>Predictive model for a bank's customer churn rate. Covered data exploration, feature engineering, and supervised model comparison.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <dl class="grid">
+        <dt>Languages</dt>
+        <dd>C#, TypeScript, JavaScript, C, C++, Python, Java, SQL, HTML, CSS</dd>
+        <dt>Frameworks &amp; Runtimes</dt>
+        <dd>.NET / .NET Core, ASP.NET MVC, Entity Framework, Unity, React</dd>
+        <dt>Mobile &amp; Game</dt>
+        <dd>Unity architecture, Android, iOS, reel/spin mechanics, payline systems, game configuration</dd>
+        <dt>Backend &amp; Data</dt>
+        <dd>REST / SOAP, WCF, MSSQL, Oracle, IIS</dd>
+        <dt>Practices</dt>
+        <dd>SOLID, Design Patterns, IoC / Dependency Injection, Auth / Authorization, SDLC, Multithreading</dd>
+        <dt>Tooling</dt>
+        <dd>Git, GitLab, GitLab CI/CD, Jira, JMeter</dd>
+      </dl>
+    </section>
+
+    <section class="two-col">
+      <div>
+        <h2>Education</h2>
+        <div class="row">
+          <h3>B.Tech · GGSIP University</h3>
+        </div>
+        <p class="meta">Aug 2018 — May 2022 · New Delhi · 80%</p>
+      </div>
+      <div>
+        <h2>Certifications</h2>
+        <ul class="compact-list">
+          <li>C# — GTBIT</li>
+          <li>C++ — GTBIT</li>
+          <li>Machine Learning — Internshala</li>
+          <li>Android App Development — Internshala</li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>
