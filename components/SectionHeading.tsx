@@ -1,16 +1,8 @@
-export default function SectionHeading({
-  prompt,
-  title,
-}: {
-  prompt: string;
-  title: string;
-}) {
+export default function SectionHeading({ title }: { title: string }) {
   return (
-    <div className="mb-10">
-      <p className="mono text-sm text-accent">
-        <span className="text-muted">$</span> {prompt}
-      </p>
-      <h2 className="mt-2 text-2xl md:text-3xl font-semibold tracking-tight">
+    <div className="mb-10 flex items-baseline gap-3">
+      <span className="h-px flex-none w-8 bg-accent" aria-hidden />
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
         {title}
       </h2>
     </div>
