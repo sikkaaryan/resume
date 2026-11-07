@@ -1,16 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-
-const SITE_URL = "https://aryan-sikka.vercel.app";
+import AmbientSoundProvider from "@/components/portfolio/AmbientSoundProvider";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Aryan Sikka — Software Engineer II",
+    default: "Aryan Sikka — Engineering Portfolio",
     template: "%s · Aryan Sikka",
   },
   description:
-    "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows. Building production mobile game modules and agent-driven RTP automation.",
+    "Aryan Sikka is a software engineer building production systems, cross-platform game experiences, reusable frameworks, and AI-assisted engineering workflows.",
   keywords: [
     "Aryan Sikka",
     "Software Engineer",
@@ -25,29 +23,27 @@ export const metadata: Metadata = {
     "Noida",
     "India",
   ],
-  authors: [{ name: "Aryan Sikka", url: SITE_URL }],
+  authors: [{ name: "Aryan Sikka" }],
   creator: "Aryan Sikka",
   openGraph: {
     type: "website",
-    url: SITE_URL,
     siteName: "Aryan Sikka",
-    title: "Aryan Sikka — Software Engineer II",
+    title: "Aryan Sikka — Engineering Portfolio",
     description:
-      "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows.",
+      "A portfolio of production software, game technology, reusable engineering systems, and AI-assisted automation.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aryan Sikka — Software Engineer II",
+    title: "Aryan Sikka — Engineering Portfolio",
     description:
-      "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows.",
+      "A portfolio of production software, game technology, reusable engineering systems, and AI-assisted automation.",
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  alternates: { canonical: SITE_URL },
 };
 
 export const viewport: Viewport = {
@@ -61,9 +57,9 @@ export const viewport: Viewport = {
 
 const themeInit = `
 (function(){try{
-  var t = localStorage.getItem('theme');
-  if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+  var t = localStorage.getItem('portfolio-theme');
+  if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  else document.documentElement.removeAttribute('data-theme');
 }catch(e){}})();
 `;
 
@@ -77,7 +73,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body>{children}</body>
+      <body><AmbientSoundProvider>{children}</AmbientSoundProvider></body>
     </html>
   );
 }

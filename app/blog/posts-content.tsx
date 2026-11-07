@@ -1,83 +1,61 @@
 import type { ComponentType } from "react";
 
 function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="text-xl md:text-2xl font-semibold mt-10 mb-3 tracking-tight text-text">
-      {children}
-    </h2>
-  );
+  return <h2>{children}</h2>;
 }
 
 function P({ children }: { children: React.ReactNode }) {
-  return <p className="mb-4">{children}</p>;
-}
-
-function Code({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="mono text-[0.92em] px-1.5 py-0.5 rounded bg-surface border border-border text-accent">
-      {children}
-    </code>
-  );
+  return <p>{children}</p>;
 }
 
 function Pre({ children }: { children: React.ReactNode }) {
-  return (
-    <pre className="mono text-[12.5px] leading-relaxed bg-surface border border-border rounded-lg p-4 my-6 overflow-x-auto text-text/90">
-      {children}
-    </pre>
-  );
+  return <pre>{children}</pre>;
 }
 
-function AgentsRtpPost() {
+function GameMathNotes() {
   return (
     <>
       <P>
-        Slot games live and die by their <Code>RTP</Code> — the expected
-        return-to-player percentage. Get the math wrong by even a fraction of a
-        percent and you've either burned the operator or pushed a noncompliant
-        build to production. Traditionally we verified RTP by hand: design
-        spreadsheets, simulation runs, careful eyeballing of paytables.
+        In a game, a small configuration change can affect more than the part
+        you were editing. Reels, symbols, paylines, and the paytable all need
+        to agree with one another. Checking those pieces by hand every time
+        gets repetitive, and it is easy to miss a change when you are moving
+        between features.
       </P>
       <P>
-        It worked, but it didn't scale. Each new game module pulled an engineer
-        away from feature work for a day or two of arithmetic. After the third
-        time I caught the same class of bug — a payline ordering swap that
-        shifted RTP by 0.4% — I started wiring up a small agent to do it for
-        me.
+        I started looking at ways to make the checks more repeatable. The idea
+        is simple: use the same inputs, run the same set of checks, and produce
+        a report that makes it clear what needs a closer look.
       </P>
-
-      <H2>The pipeline</H2>
+      <H2>Keep each check focused</H2>
       <P>
-        The setup is unglamorous. A handful of focused agents, each doing one
-        small thing:
+        I find it easier to reason about a few small checks than one large
+        process. Configuration validation can catch missing or inconsistent
+        values. A simulation can estimate the result over many spins. A
+        comparison can highlight where a change differs from the previous
+        version.
       </P>
-      <Pre>{`config (paytable, paylines, reels)
-  └─ simulator agent  →  N million spins → RTP estimate
-  └─ rule-check agent →  flags structural issues (dup symbols, bad weights)
-  └─ diff agent       →  compares vs. last green build, highlights drift
-  └─ report agent     →  writes a human-readable summary`}</Pre>
+      <Pre>{["game configuration", "  ├─ validate the inputs", "  ├─ run the simulation", "  ├─ compare with the previous result", "  └─ review the report"].join("\n")}</Pre>
       <P>
-        Each agent has a narrow contract — input schema in, output schema out.
-        When something fails, I can swap one agent without re-thinking the
-        whole flow.
+        Each step should have a clear input and output. That makes failures
+        easier to trace and makes it possible to change one part without
+        rewriting the whole workflow.
       </P>
-
-      <H2>What this changes</H2>
+      <H2>Keep a person in the loop</H2>
       <P>
-        The headline result is that we catch math regressions before they hit
-        QA. The quieter result is the time saved: a verification pass that
-        used to be a half-day of careful work is now a CI step that completes
-        in a couple of minutes. The team gets that time back for actual
-        gameplay work.
+        Automated checks are useful for catching things that are easy to
+        overlook, but they do not replace reviewing the result. A report can
+        point to an unexpected change; an engineer still needs to understand
+        whether that change is intended.
       </P>
       <P>
-        I'll write more about the individual agent prompts and how I handle
-        non-determinism in a follow-up.
+        That is the part I care about most: less time repeating the same
+        checks, and more time understanding the behaviour of the game.
       </P>
     </>
   );
 }
 
 export const postBodies: Record<string, ComponentType> = {
-  "agents-for-rtp-verification": AgentsRtpPost,
+  "agents-for-rtp-verification": GameMathNotes,
 };
