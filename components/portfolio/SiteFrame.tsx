@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import SiteNav from "./SiteNav";
-import AmbientSoundToggle from "./AmbientSoundToggle";
 
 export default function SiteFrame({
   children,
@@ -12,7 +11,6 @@ export default function SiteFrame({
   return (
     <div className="portfolio-shell">
       <SiteNav />
-      <AmbientSoundToggle />
       <main className="page-main">
         <div className="page-section-label"><span>{section}</span><span>ARYAN SIKKA · SOFTWARE ENGINEER</span></div>
         {children}
