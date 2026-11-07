@@ -7,8 +7,8 @@ export function generateStaticParams() {
   return githubProjects.map((project) => ({ slug: project.slug }));
 }
 
-export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default function ProjectDetail({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const project = getGithubProject(slug);
   if (!project) notFound();
 
