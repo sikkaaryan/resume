@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://aryan-sikka.vercel.app";
-
 export const metadata: Metadata = {
   title: {
     default: "Aryan Sikka — Engineering Portfolio",
