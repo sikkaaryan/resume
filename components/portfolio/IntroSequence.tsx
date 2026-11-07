@@ -13,18 +13,11 @@ export default function IntroSequence() {
   function enter() {
     if (leaving) return;
     setLeaving(true);
-    try { window.sessionStorage.setItem("portfolio-intro-seen", "1"); } catch {}
     window.setTimeout(() => router.replace("/home"), 420);
   }
 
   useEffect(() => {
     let timer: number | undefined;
-    try {
-      if (window.sessionStorage.getItem("portfolio-intro-seen") === "1") {
-        router.replace("/home");
-        return;
-      }
-    } catch {}
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       enter();
       return;
