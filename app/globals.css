@@ -970,7 +970,10 @@ body { margin: 0; background: var(--ink); color: var(--paper); }
 @keyframes introFinalLine { 0%,89%{opacity:0;letter-spacing:.65em} 96%,100%{opacity:1;letter-spacing:.3em} }
 @media(max-width:700px) {
  .intro-topline { font-size:6px;letter-spacing:.1em; }.intro-top-status { display:none; }
- .intro-side-note { font-size:6px; }.intro-side-note--left { left:-4px; }.intro-side-note--right { right:-4px; }
+ /* Keep side labels fully inside the clipped stage on narrow screens. */
+ .intro-side-note { font-size:6px; width:max-content; max-width:calc(50% - 22px); white-space:nowrap; letter-spacing:.14em; }
+ .intro-side-note--left { left:10px; right:auto; transform:translateY(-50%); }
+ .intro-side-note--right { right:10px; left:auto; transform:translateY(-50%); }
  .intro-reactor { width:min(78vw,430px); }.intro-sequence strong { font-size:clamp(44px,12vw,78px); }
  .intro-final-line { bottom:5%;font-size:6px;letter-spacing:.12em;white-space:nowrap; }
  .intro-bottom-label { display:none; }.intro-progress { width:70px; }
