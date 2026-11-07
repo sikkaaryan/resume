@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DigitalCore from "./DigitalCore";
+import AmbientSoundToggle from "./AmbientSoundToggle";
+import { markIntroCompleted } from "./intro-navigation";
 
 const INTRO_MS = 5000;
 
@@ -13,6 +15,7 @@ export default function IntroSequence() {
   function enter() {
     if (leaving) return;
     setLeaving(true);
+    markIntroCompleted();
     window.setTimeout(() => router.replace("/home"), 420);
   }
 
@@ -39,7 +42,7 @@ export default function IntroSequence() {
       <div className="intro-bottom">
         <div className="intro-progress"><span /></div>
         <span>ENTERING PORTFOLIO</span>
-        <button type="button" onClick={enter}>SKIP INTRO <b>↗</b></button>
+        <div className="intro-controls"><AmbientSoundToggle /><button type="button" onClick={enter}>SKIP INTRO <b>↗</b></button></div>
       </div>
       <a className="intro-skip-fallback" href="/home">Skip intro</a>
     </main>
