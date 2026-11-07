@@ -1,10 +1,12 @@
 import Link from "next/link";
 import DigitalCore from "./DigitalCore";
+import Avatar from "@/components/Avatar";
 
 export default function CinematicHero() {
   return (
     <section className="cinematic-hero">
       <div className="cinematic-hero__copy">
+        <div className="cinematic-hero__identity"><Avatar /><span>ARYAN SIKKA<br /><small>SOFTWARE ENGINEER II</small></span></div>
         <p className="page-eyebrow"><i /> SOFTWARE ENGINEER II · NOIDA, INDIA</p>
         <p className="cinematic-hero__index">PORTFOLIO / 2026 <span>AVAILABLE FOR SELECT PROJECTS</span></p>
         <h1>Engineering<br /><em>what comes next.</em></h1>
