@@ -4,7 +4,24 @@ import { useEffect, useState, type FormEvent } from "react";
 import DigitalCore from "./DigitalCore";
 import { certifications, education, experience, featuredProjects, profile, skillGroups } from "@/lib/data";
 
-const experienceHighlights: Record<string, string[]> = {\n  "Aristocrat Technologies": [\n    "Develop production mobile game modules for Android and iOS using C#, TypeScript, and a Unity-based architecture.",\n    "Own product features across gameplay systems, UI flows, backend integrations, analytics, and production fixes.",\n    "Contributed to 5–6 shipped game modules, including Buffalo Link.",\n    "Built a reusable TypeScript game-template framework that reduced new-title development time by approximately 30%.",\n    "Develop internal AI-assisted workflows for code generation and automated quality checks.",\n    "Investigate production and QA issues while collaborating across engineering, QA, design, and product teams.",\n  ],\n  "Cavisson Systems Inc": [\n    "Enhanced enterprise ASP.NET MVC and ASP.NET Core applications, focusing on reliability and performance.",\n    "Applied Entity Framework and dependency-injection patterns to improve application architecture.",\n    "Built and maintained .NET applications backed by MSSQL and Oracle databases.",\n    "Performed load and performance testing with JMeter and collaborated through Git and GitLab.",\n  ],\n};\n\nconst navItems = [
+const experienceHighlights: Record<string, string[]> = {
+  "Aristocrat Technologies": [
+    "Develop production mobile game modules for Android and iOS using C#, TypeScript, and a Unity-based architecture.",
+    "Own product features across gameplay systems, UI flows, backend integrations, analytics, and production fixes.",
+    "Contributed to 5–6 shipped game modules, including Buffalo Link.",
+    "Built a reusable TypeScript game-template framework that reduced new-title development time by approximately 30%.",
+    "Develop internal AI-assisted workflows for code generation and automated quality checks.",
+    "Investigate production and QA issues while collaborating across engineering, QA, design, and product teams.",
+  ],
+  "Cavisson Systems Inc": [
+    "Enhanced enterprise ASP.NET MVC and ASP.NET Core applications, focusing on reliability and performance.",
+    "Applied Entity Framework and dependency-injection patterns to improve application architecture.",
+    "Built and maintained .NET applications backed by MSSQL and Oracle databases.",
+    "Performed load and performance testing with JMeter and collaborated through Git and GitLab.",
+  ],
+};
+
+const navItems = [
   ["intro", "Overview", "01"],
   ["about", "About", "02"],
   ["experience", "Experience", "03"],
