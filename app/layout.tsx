@@ -4,7 +4,6 @@ import "./globals.css";
 const SITE_URL = "https://aryan-sikka.vercel.app";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
   title: {
     default: "Aryan Sikka — Engineering Portfolio",
     template: "%s · Aryan Sikka",
@@ -25,11 +24,10 @@ export const metadata: Metadata = {
     "Noida",
     "India",
   ],
-  authors: [{ name: "Aryan Sikka", url: SITE_URL }],
+  authors: [{ name: "Aryan Sikka" }],
   creator: "Aryan Sikka",
   openGraph: {
     type: "website",
-    url: SITE_URL,
     siteName: "Aryan Sikka",
     title: "Aryan Sikka — Engineering Portfolio",
     description:
@@ -47,7 +45,6 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  alternates: { canonical: SITE_URL },
 };
 
 export const viewport: Viewport = {
