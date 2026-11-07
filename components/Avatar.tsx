@@ -24,9 +24,9 @@ export default function Avatar() {
       </div>
 
       {/* Online indicator dot */}
-      <span className="absolute bottom-3 right-3 flex h-4 w-4 z-10">
+      <span className="absolute bottom-0 right-0 translate-x-[35%] translate-y-[35%] flex h-3.5 w-3.5 z-20">
         <span className="absolute inline-flex h-full w-full rounded-full bg-accent2 opacity-75 pulse-ring" />
-        <span className="relative inline-flex rounded-full h-4 w-4 bg-accent2 ring-2 ring-bg" />
+        <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-accent2 ring-[3px] ring-bg" />
       </span>
     </div>
   );
