@@ -6,11 +6,11 @@ const SITE_URL = "https://aryan-sikka.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Aryan Sikka — Software Engineer II",
+    default: "Aryan Sikka — Engineering Portfolio",
     template: "%s · Aryan Sikka",
   },
   description:
-    "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows. Building production mobile game modules and agent-driven RTP automation.",
+    "Aryan Sikka is a software engineer building production systems, cross-platform game experiences, reusable frameworks, and AI-assisted engineering workflows.",
   keywords: [
     "Aryan Sikka",
     "Software Engineer",
@@ -31,14 +31,14 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Aryan Sikka",
-    title: "Aryan Sikka — Software Engineer II",
+    title: "Aryan Sikka — Engineering Portfolio",
     description:
-      "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows.",
+      "A portfolio of production software, game technology, reusable engineering systems, and AI-assisted automation.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aryan Sikka — Software Engineer II",
+    title: "Aryan Sikka — Engineering Portfolio",
     description:
       "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows.",
   },
@@ -61,9 +61,9 @@ export const viewport: Viewport = {
 
 const themeInit = `
 (function(){try{
-  var t = localStorage.getItem('theme');
-  if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-  if (t === 'light') document.documentElement.setAttribute('data-theme','light');
+  var t = localStorage.getItem('portfolio-theme');
+  if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  else document.documentElement.removeAttribute('data-theme');
 }catch(e){}})();
 `;
 
