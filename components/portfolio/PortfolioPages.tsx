@@ -59,6 +59,7 @@ export function AboutPage() {
   return (
     <SiteFrame section="ABOUT / BACKGROUND">
       <PageIntro kicker="ABOUT ME" title={<>A little about<br /><em>how I work.</em></>} copy="I’m a software engineer based in Noida. Most of my work has been around mobile games and .NET applications, with a growing interest in tools that improve the way software gets built." />
+      <div className="about-portrait"><Avatar /><p>ARYAN SIKKA <span>SOFTWARE ENGINEER</span></p></div>
       <div className="about-page-grid">
         <div className="about-note"><span>01 / WHAT I DO</span><h2>I like building things that solve a real problem.</h2><p>I’ve worked on features from the first implementation through testing and release. That has meant writing game logic, connecting APIs, fixing bugs, and making common code easier for the rest of the team to use.</p></div>
         <div className="about-note"><span>02 / WHAT I ENJOY</span><h2>Understanding how the pieces fit together.</h2><p>I enjoy debugging difficult issues, improving existing code, and working out where a reusable solution makes sense. I’m also interested in game technology, backend systems, and practical uses of AI in development.</p></div>
