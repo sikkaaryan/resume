@@ -2,18 +2,16 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { hasCompletedIntroInThisAppSession } from "./intro-navigation";
 
 export default function HomeRefreshIntro() {
   const router = useRouter();
 
   useEffect(() => {
-    const navigation = window.performance.getEntriesByType("navigation")[0] as
-      | PerformanceNavigationTiming
-      | undefined;
-
-    // A full browser refresh on /home should replay the intro. Normal
-    // in-app navigation to Home should remain immediate.
-    if (navigation?.type === "reload") {
+    // The module flag survives client-side route changes but resets on a
+    // full document reload. This reliably distinguishes an in-app return
+    // to Home from a fresh load/refresh of /home.
+    if (!hasCompletedIntroInThisAppSession()) {
       router.replace("/");
     }
   }, [router]);
