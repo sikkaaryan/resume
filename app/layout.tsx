@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import AmbientSoundProvider from "@/components/portfolio/AmbientSoundProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -73,7 +72,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body><AmbientSoundProvider />{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
