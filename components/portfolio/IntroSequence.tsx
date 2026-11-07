@@ -37,9 +37,9 @@ export default function IntroSequence() {
       master.connect(context.destination);
       const oscillators: OscillatorNode[] = [];
       [
-        { frequency: 55, type: "sine" as OscillatorType, gain: 0.7 },
-        { frequency: 82.41, type: "sine" as OscillatorType, gain: 0.22 },
-        { frequency: 164.81, type: "triangle" as OscillatorType, gain: 0.045 },
+        { frequency: 55, type: "sine" as OscillatorType, gain: 0.85 },
+        { frequency: 82.41, type: "sine" as OscillatorType, gain: 0.38 },
+        { frequency: 164.81, type: "triangle" as OscillatorType, gain: 0.12 },
       ].forEach((layer) => {
         const oscillator = context.createOscillator();
         const volume = context.createGain();
