@@ -10,12 +10,12 @@ export type Post = {
 export const posts: Post[] = [
   {
     slug: "agents-for-rtp-verification",
-    title: "Using AI Agents to Verify Slot Game RTP",
+    title: "Making game-math checks repeatable",
     date: "2026-06-26",
     summary:
-      "Why hand-verifying RTP doesn't scale, and how a small agent pipeline catches math regressions before QA ever sees them.",
+      "A practical note on making repeated game-math checks easier to run and review.",
     minutes: 4,
-    tags: ["AI", "Agents", "Game Math", "RTP"],
+    tags: ["Game Development", "Verification"],
   },
 ];
 
