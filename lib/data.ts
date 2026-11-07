@@ -8,7 +8,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/sikkaaryan6529",
   resumeUrl: "/Aryan-Sikka-Resume.pdf?v=2026-06b",
   tagline:
-    "Software Engineer with ~4 years building production .NET systems and cross-platform mobile game modules. Owns features end-to-end, debugs hard problems, and ships reusable frameworks teams actually use.",
+    "Software engineer working across .NET applications and cross-platform mobile games. I like building features end-to-end, solving difficult bugs, and making tools that save repeat work.",
 };
 
 export type Job = {
@@ -32,7 +32,7 @@ export const experience: Job[] = [
     bullets: [
       "Develop production mobile game modules for NFL SB Slots (Android + iOS) using C#, TypeScript, Unity-based architecture, backend API integration, and configuration-driven logic.",
       "Own core product features end-to-end: game logic, reel/spin mechanics, bonus rounds, UI flows, sound integration, backend data flow, analytics/events, and bug fixes.",
-      "Delivered and contributed to 5–6 production game modules including Buffalo Link — math-driven gameplay logic, symbol configuration, payline handling, and game-state behavior.",
+      "Contributed to several production game modules, including Buffalo Link, with work across gameplay features and game-state behavior.",
       "Built a reusable game template framework (base structure, reel engine, configurable paylines, symbol config, common setup components) that cut new-game development time by ~30%.",
       "Building internal AI workflows and agent pipelines to automate game code generation — reducing boilerplate work across new modules and accelerating delivery for the team.",
       "Using AI agents to automate RTP (Return-to-Player) verification and fix common math/logic defects — catching regressions earlier and improving release reliability.",
