@@ -1,7 +1,8 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import SiteFrame from "./SiteFrame";
 import Avatar from "@/components/Avatar";
-import { education, experience, skillGroups, certifications, featuredProjects } from "@/lib/data";
+import { education, experience, skillGroups, certifications } from "@/lib/data";
 import { githubProjects } from "@/lib/github-projects";
 import { posts } from "@/lib/posts";
 
@@ -19,7 +20,7 @@ const cavissonHighlights = [
   "Ran JMeter tests to check application performance under load.",
 ];
 
-function PageIntro({ kicker, title, copy }: { kicker: string; title: string; copy: string }) {
+function PageIntro({ kicker, title, copy }: { kicker: string; title: ReactNode; copy: string }) {
   return (
     <div className="page-intro">
       <p className="page-eyebrow">{kicker}</p>
@@ -139,7 +140,7 @@ export function GitHubPage() {
         {githubProjects.map((project, index) => (
           <article className="github-project-card" id={project.slug} key={project.slug}>
             <div className="github-card-top"><span>0{index + 1} / {project.kind}</span><a href={project.url} target="_blank" rel="noreferrer" aria-label={`Open ${project.repository} repository`}>↗</a></div>
-            <h2>{project.name}</h2><p>{project.description}</p>
+            <h2><Link href={`/projects/${project.slug}`}>{project.name}</Link></h2><p>{project.description}</p>
             <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
             <div className="tag-row">{project.technologies.map((tech) => <span key={tech}>{tech}</span>)}</div>
             <div className="github-card-actions"><a href={project.url} target="_blank" rel="noreferrer">View source <b>↗</b></a>{project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noreferrer">Open live app <b>↗</b></a>}</div>
