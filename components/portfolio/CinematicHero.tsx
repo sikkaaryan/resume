@@ -8,7 +8,7 @@ export default function CinematicHero() {
       <div className="cinematic-hero__copy">
         <div className="cinematic-hero__identity"><Avatar /><span>ARYAN SIKKA<br /><small>SOFTWARE ENGINEER II</small></span></div>
         <p className="page-eyebrow"><i /> SOFTWARE ENGINEER II · NOIDA, INDIA</p>
-        <p className="cinematic-hero__index">PORTFOLIO / 2026 <span>AVAILABLE FOR SELECT PROJECTS</span></p>
+        <p className="cinematic-hero__index">PORTFOLIO / 2026 <Link className="cinematic-hero__availability" href="/contact">HAVE A PROJECT IN MIND? LET’S TALK <span aria-hidden="true">↗</span></Link></p>
         <h1>Engineering<br /><em>what comes next.</em></h1>
         <p className="cinematic-hero__lede">I build mobile game experiences, application systems, and tools that make complex development work simpler.</p>
         <div className="page-actions">
