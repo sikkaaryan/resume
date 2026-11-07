@@ -39,8 +39,8 @@ export default function IntroSequence() {
       <div className="intro-topline"><span>AS / 001</span><span>PERSONAL ENGINEERING PORTFOLIO</span></div>
       <div className="intro-center">
         <div className="intro-core"><DigitalCore /></div>
-        <p className="intro-overline">ARYAN SIKKA</p>
-        <h1>Built with<br /><em>purpose.</em></h1>
+        <p className="intro-overline">SOFTWARE ENGINEER</p>
+        <h1>Aryan<br /><em>Sikka.</em></h1>
         <p className="intro-caption">SOFTWARE ENGINEER <i /> NOIDA, INDIA</p>
       </div>
       <div className="intro-bottom">
