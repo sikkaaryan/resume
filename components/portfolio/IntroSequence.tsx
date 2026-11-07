@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import DigitalCore from "./DigitalCore";
+import { startPortfolioAudio, stopPortfolioAudio, type PortfolioAudio } from "@/lib/portfolio-audio";
 
 const INTRO_MS = 5000;
 
@@ -10,48 +11,21 @@ export default function IntroSequence() {
   const router = useRouter();
   const [leaving, setLeaving] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const audioRef = useRef<{ context: AudioContext; oscillators: OscillatorNode[]; master: GainNode } | null>(null);
+  const audioRef = useRef<PortfolioAudio | null>(null);
 
   function stopSound() {
-    const audio = audioRef.current;
-    if (!audio) return;
+    if (!audioRef.current) return;
+    stopPortfolioAudio(audioRef.current);
     audioRef.current = null;
-    try {
-      audio.master.gain.setTargetAtTime(0.0001, audio.context.currentTime, 0.15);
-      window.setTimeout(() => {
-        audio.oscillators.forEach((oscillator) => { try { oscillator.stop(); } catch {} });
-        void audio.context.close();
-      }, 650);
-    } catch { void audio.context.close(); }
     setSoundEnabled(false);
   }
 
   async function toggleSound() {
     if (audioRef.current) { stopSound(); return; }
     try {
-      const context = new window.AudioContext();
-      await context.resume();
-      const master = context.createGain();
-      master.gain.setValueAtTime(0.0001, context.currentTime);
-      master.gain.exponentialRampToValueAtTime(0.045, context.currentTime + 1.25);
-      master.connect(context.destination);
-      const oscillators: OscillatorNode[] = [];
-      [
-        { frequency: 55, type: "sine" as OscillatorType, gain: 0.85 },
-        { frequency: 82.41, type: "sine" as OscillatorType, gain: 0.38 },
-        { frequency: 164.81, type: "triangle" as OscillatorType, gain: 0.12 },
-      ].forEach((layer) => {
-        const oscillator = context.createOscillator();
-        const volume = context.createGain();
-        oscillator.type = layer.type;
-        oscillator.frequency.value = layer.frequency;
-        volume.gain.value = layer.gain;
-        oscillator.connect(volume);
-        volume.connect(master);
-        oscillator.start();
-        oscillators.push(oscillator);
-      });
-      audioRef.current = { context, oscillators, master };
+      const audio = startPortfolioAudio();
+      audioRef.current = audio;
+      await audio.context.resume();
       setSoundEnabled(true);
     } catch { setSoundEnabled(false); }
   }
@@ -79,10 +53,8 @@ export default function IntroSequence() {
     timer = window.setTimeout(enter, INTRO_MS);
     return () => {
       if (timer) window.clearTimeout(timer);
-      const audio = audioRef.current;
-      if (audio) {
-        audio.oscillators.forEach((oscillator) => { try { oscillator.stop(); } catch {} });
-        void audio.context.close();
+      if (audioRef.current) {
+        stopPortfolioAudio(audioRef.current);
         audioRef.current = null;
       }
     };
@@ -102,7 +74,7 @@ export default function IntroSequence() {
         <div className="intro-progress"><span /></div>
         <span>ENTERING PORTFOLIO</span>
         <button className="intro-sound-toggle" type="button" onClick={toggleSound} aria-pressed={soundEnabled}>
-          {soundEnabled ? "SOUND ON" : "ENABLE SOUND"} <b>{soundEnabled ? "◖))" : "◖×"}</b>
+          {soundEnabled ? "AMBIENCE ON" : "ENABLE AMBIENCE"} <b>{soundEnabled ? "◖))" : "◖×"}</b>
         </button>
         <button type="button" onClick={enter}>SKIP INTRO <b>↗</b></button>
       </div>
