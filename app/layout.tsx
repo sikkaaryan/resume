@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aryan Sikka — Engineering Portfolio",
     description:
-      "Software Engineer II at Aristocrat Technologies. C#, TypeScript, Unity, and AI workflows.",
+      "A portfolio of production software, game technology, reusable engineering systems, and AI-assisted automation.",
   },
   robots: {
     index: true,
