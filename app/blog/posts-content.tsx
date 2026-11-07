@@ -35,7 +35,7 @@ function GameMathNotes() {
         comparison can highlight where a change differs from the previous
         version.
       </P>
-      <Pre>{"game configuration\\n  ├─ validate the inputs\\n  ├─ run the simulation\\n  ├─ compare with the previous result\\n  └─ review the report"}</Pre>
+      <Pre>{["game configuration", "  ├─ validate the inputs", "  ├─ run the simulation", "  ├─ compare with the previous result", "  └─ review the report"].join("\n")}</Pre>
       <P>
         Each step should have a clear input and output. That makes failures
         easier to trace and makes it possible to change one part without
