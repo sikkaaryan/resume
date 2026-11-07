@@ -6,7 +6,7 @@ import DigitalCore from "./DigitalCore";
 import AmbientSoundToggle from "./AmbientSoundToggle";
 import { markIntroCompleted } from "./intro-navigation";
 
-const INTRO_MS = 5000;
+const INTRO_MS = 10000;
 
 export default function IntroSequence() {
   const router = useRouter();
