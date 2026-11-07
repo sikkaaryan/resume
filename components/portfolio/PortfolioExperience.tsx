@@ -21,6 +21,21 @@ const experienceHighlights: Record<string, string[]> = {
   ],
 };
 
+const projectCopy: Record<string, { description: string; tags: string[] }> = {
+  "AI Agent Pipelines": {
+    description: "Designed internal AI-assisted workflows to reduce repetitive implementation work and bring automated quality checks into the development loop.",
+    tags: ["AI Agents", "Workflow Automation", "Developer Productivity"],
+  },
+  "Buffalo Link": {
+    description: "Contributed to a production mobile game module, implementing key gameplay features and helping deliver a stable Android and iOS experience.",
+    tags: ["TypeScript", "Unity", "Game Development", "Mobile"],
+  },
+  "Reusable Game Template Framework": {
+    description: "Built reusable game foundations and configurable modules that helped the team deliver new titles faster with a more consistent structure.",
+    tags: ["TypeScript", "Framework Design", "Developer Tools"],
+  },
+};
+
 const navItems = [
   ["intro", "Overview", "01"],
   ["about", "About", "02"],
@@ -167,7 +182,7 @@ export default function PortfolioExperience() {
             {featuredProjects.map((project, index) => (
               <article className={`project-row project-${project.accent}`} key={project.name}>
                 <div className="project-number">0{index + 1}</div>
-                <div className="project-main"><div className="project-type">{project.context === "work" ? "PROFESSIONAL WORK" : "PERSONAL PROJECT"}</div><h3>{project.name}</h3><p>{project.description}</p><div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+                <div className="project-main"><div className="project-type">{project.context === "work" ? "PROFESSIONAL WORK" : "PERSONAL PROJECT"}</div><h3>{project.name}</h3><p>{projectCopy[project.name]?.description || project.description}</p><div className="tag-row">{(projectCopy[project.name]?.tags || project.tags).map((tag) => <span key={tag}>{tag}</span>)}</div></div>
                 <div className="project-outcome"><strong>{project.metric}</strong><span>{project.metricLabel}</span><i>↗</i></div>
               </article>
             ))}
