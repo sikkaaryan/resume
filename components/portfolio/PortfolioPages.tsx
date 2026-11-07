@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import SiteFrame from "./SiteFrame";
 import Avatar from "@/components/Avatar";
-import { education, experience, skillGroups, certifications } from "@/lib/data";
+import { education, skillGroups, certifications } from "@/lib/data";
 import { githubProjects } from "@/lib/github-projects";
 import { posts } from "@/lib/posts";
 
