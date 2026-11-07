@@ -695,3 +695,9 @@ body { margin: 0; background: var(--ink); color: var(--paper); }
 .blog-article > footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 55px; padding-top: 20px; border-top: 1px solid var(--line); font: 9px var(--mono); color: var(--paper-dim); }
 .blog-article > footer a:hover { color: var(--cyan); }
 @media (max-width: 620px) { .blog-article { padding: 45px 0 70px; }.blog-article > footer { flex-direction: column; } }
+
+
+.not-found-page { min-height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.not-found-page h1 { margin: 24px 0 18px; font-size: clamp(58px, 8vw, 100px); font-weight: 500; line-height: .92; letter-spacing: -.08em; }
+.not-found-page h1 em { color: var(--paper-dim); font-style: normal; font-weight: 350; }
+.not-found-page > p:not(.page-eyebrow) { color: var(--paper-dim); font-size: 14px; line-height: 1.8; }
