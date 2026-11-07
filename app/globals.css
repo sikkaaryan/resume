@@ -871,3 +871,11 @@ body { margin: 0; background: var(--ink); color: var(--paper); }
  .cinematic-hero__identity { margin-bottom:20px;gap:12px; }
  .cinematic-hero__identity > div { width:64px;height:64px;flex-basis:64px; }
 }
+
+.cinematic-hero__availability { color:var(--cyan); text-decoration:none; transition:color .2s ease, opacity .2s ease; }
+.cinematic-hero__availability:hover { color:var(--paper); }
+.cinematic-hero__availability span { display:inline-block; transition:transform .2s ease; }
+.cinematic-hero__availability:hover span { transform:translate(3px,-3px); }
+@media (max-width:620px) {
+  .cinematic-hero__index { align-items:flex-start; flex-wrap:wrap; gap:10px 16px; }
+}
