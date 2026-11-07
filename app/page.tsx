@@ -1,5 +1,5 @@
-import PortfolioExperience from "@/components/portfolio/PortfolioExperience";
+import IntroSequence from "@/components/portfolio/IntroSequence";
 
 export default function Page() {
-  return <PortfolioExperience />;
+  return <IntroSequence />;
 }
