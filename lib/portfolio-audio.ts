@@ -2,7 +2,8 @@ export type PortfolioAudio = {
   element: HTMLAudioElement;
 };
 
-const TRACK_SRC = "/audio/ambient-sleep.mp3";
+// The uploaded track is currently stored at the public root of the repository.
+const TRACK_SRC = "/andriig-sleep-soothing-sleep-music-576435.mp3";
 const TARGET_VOLUME = 0.42;
 const FADE_MS = 1400;
 
