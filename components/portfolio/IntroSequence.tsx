@@ -1,39 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DigitalCore from "./DigitalCore";
-import { startPortfolioAudio, stopPortfolioAudio, type PortfolioAudio } from "@/lib/portfolio-audio";
 
 const INTRO_MS = 5000;
 
 export default function IntroSequence() {
   const router = useRouter();
   const [leaving, setLeaving] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(false);
-  const audioRef = useRef<PortfolioAudio | null>(null);
-
-  function stopSound() {
-    if (!audioRef.current) return;
-    stopPortfolioAudio(audioRef.current);
-    audioRef.current = null;
-    setSoundEnabled(false);
-  }
-
-  async function toggleSound() {
-    if (audioRef.current) { stopSound(); return; }
-    try {
-      const audio = startPortfolioAudio();
-      audioRef.current = audio;
-      await audio.context.resume();
-      setSoundEnabled(true);
-    } catch { setSoundEnabled(false); }
-  }
 
   function enter() {
     if (leaving) return;
     setLeaving(true);
-    stopSound();
     try { window.sessionStorage.setItem("portfolio-intro-seen", "1"); } catch {}
     window.setTimeout(() => router.replace("/home"), 420);
   }
@@ -51,13 +30,7 @@ export default function IntroSequence() {
       return;
     }
     timer = window.setTimeout(enter, INTRO_MS);
-    return () => {
-      if (timer) window.clearTimeout(timer);
-      if (audioRef.current) {
-        stopPortfolioAudio(audioRef.current);
-        audioRef.current = null;
-      }
-    };
+    return () => { if (timer) window.clearTimeout(timer); };
   }, [router]);
 
   return (
@@ -73,9 +46,6 @@ export default function IntroSequence() {
       <div className="intro-bottom">
         <div className="intro-progress"><span /></div>
         <span>ENTERING PORTFOLIO</span>
-        <button className="intro-sound-toggle" type="button" onClick={toggleSound} aria-pressed={soundEnabled}>
-          {soundEnabled ? "AMBIENCE ON" : "ENABLE AMBIENCE"} <b>{soundEnabled ? "◖))" : "◖×"}</b>
-        </button>
         <button type="button" onClick={enter}>SKIP INTRO <b>↗</b></button>
       </div>
       <a className="intro-skip-fallback" href="/home">Skip intro</a>
