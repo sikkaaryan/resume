@@ -789,3 +789,18 @@ body { margin: 0; background: var(--ink); color: var(--paper); }
   .cinematic-hero__scroll span,.gallery-art-orbit--one,.gallery-art-orbit--two { animation:none!important; }
   .gallery-detail,.career-journey-card { animation:none!important;transition:none!important;opacity:1;transform:none; }
 }
+
+
+/* Profile portrait retained in the About chapter */
+.about-portrait { display: flex; align-items: center; gap: 24px; margin: 34px 0 42px; padding: 22px 26px; width: fit-content; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 62%, transparent); }
+.about-portrait > div { margin: 0; width: 116px; height: 116px; }
+.about-portrait > p { display: flex; flex-direction: column; gap: 7px; color: var(--paper); font: 10px var(--mono); letter-spacing: .16em; }
+.about-portrait > p span { color: var(--paper-dim); font-size: 8px; }
+.intro-sound-toggle { white-space: nowrap; }
+@media (max-width: 620px) {
+  .about-portrait { gap: 16px; padding: 16px; margin: 24px 0 32px; }
+  .about-portrait > div { width: 88px; height: 88px; }
+  .intro-bottom { flex-wrap: wrap; }
+  .intro-progress { width: 100%; order: 3; }
+  .intro-bottom > span { margin-left: auto; margin-right: 0; }
+}
