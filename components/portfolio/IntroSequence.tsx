@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DigitalCore from "./DigitalCore";
 
-const INTRO_MS = 3700;
+const INTRO_MS = 3400;
 
 export default function IntroSequence() {
   const router = useRouter();
