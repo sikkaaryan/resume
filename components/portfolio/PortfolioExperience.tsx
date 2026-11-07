@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import DigitalCore from "./DigitalCore";
 import { certifications, education, experience, featuredProjects, profile, skillGroups } from "@/lib/data";
 
