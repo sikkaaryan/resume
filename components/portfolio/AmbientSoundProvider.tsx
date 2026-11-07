@@ -16,35 +16,42 @@ export default function AmbientSoundProvider({ children }: { children: ReactNode
   const [enabled, setEnabled] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
   const audioRef = useRef<PortfolioAudio | null>(null);
+  const transitionRef = useRef(false);
 
   const toggle = useCallback(async () => {
-    if (audioRef.current) {
-      const current = audioRef.current;
-      audioRef.current = null;
-      stopPortfolioAudio(current);
-      setEnabled(false);
-      return;
-    }
+    if (transitionRef.current) return;
+    transitionRef.current = true;
     try {
-      const audio = startPortfolioAudio();
+      if (audioRef.current) {
+        const current = audioRef.current;
+        audioRef.current = null;
+        setEnabled(false);
+        await stopPortfolioAudio(current);
+        return;
+      }
+      const audio = await startPortfolioAudio();
       audioRef.current = audio;
-      await audio.context.resume();
-      if (audio.context.state !== "running") throw new Error("Audio context did not start");
       setEnabled(true);
       setUnavailable(false);
     } catch {
       setUnavailable(true);
       setEnabled(false);
       if (audioRef.current) {
-        void audioRef.current.context.close();
+        audioRef.current.element.pause();
         audioRef.current = null;
       }
+    } finally {
+      transitionRef.current = false;
     }
   }, []);
 
   useEffect(() => () => {
-    if (audioRef.current) stopPortfolioAudio(audioRef.current);
+    const current = audioRef.current;
     audioRef.current = null;
+    if (current) {
+      current.element.pause();
+      current.element.src = "";
+    }
   }, []);
 
   const value = useMemo(() => ({ enabled, unavailable, toggle }), [enabled, unavailable, toggle]);
