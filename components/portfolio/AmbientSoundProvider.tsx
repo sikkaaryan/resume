@@ -1,45 +1,52 @@
 "use client";
 
-import { useEffect } from "react";
-import { startPortfolioAudio } from "@/lib/portfolio-audio";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { startPortfolioAudio, stopPortfolioAudio, type PortfolioAudio } from "@/lib/portfolio-audio";
 
-export default function AmbientSoundProvider() {
-  useEffect(() => {
-    let audio: ReturnType<typeof startPortfolioAudio> | null = null;
-    let started = false;
+type AmbientContextValue = { enabled: boolean; unavailable: boolean; toggle: () => Promise<void> };
+const AmbientContext = createContext<AmbientContextValue | null>(null);
 
-    const start = async () => {
-      if (started) return;
-      started = true;
-      try {
-        audio = startPortfolioAudio();
-        await audio.context.resume();
-        if (audio.context.state !== "running") started = false;
-      } catch {
-        started = false;
+export function useAmbientSound() {
+  const value = useContext(AmbientContext);
+  if (!value) throw new Error("useAmbientSound must be used inside AmbientSoundProvider");
+  return value;
+}
+
+export default function AmbientSoundProvider({ children }: { children: ReactNode }) {
+  const [enabled, setEnabled] = useState(false);
+  const [unavailable, setUnavailable] = useState(false);
+  const audioRef = useRef<PortfolioAudio | null>(null);
+
+  const toggle = useCallback(async () => {
+    if (audioRef.current) {
+      const current = audioRef.current;
+      audioRef.current = null;
+      stopPortfolioAudio(current);
+      setEnabled(false);
+      return;
+    }
+    try {
+      const audio = startPortfolioAudio();
+      audioRef.current = audio;
+      await audio.context.resume();
+      if (audio.context.state !== "running") throw new Error("Audio context did not start");
+      setEnabled(true);
+      setUnavailable(false);
+    } catch {
+      setUnavailable(true);
+      setEnabled(false);
+      if (audioRef.current) {
+        void audioRef.current.context.close();
+        audioRef.current = null;
       }
-    };
-
-    // Browsers may block audible autoplay. Try immediately, then resume
-    // automatically on the visitor's first interaction—without a sound toggle.
-    void start();
-    window.addEventListener("pointerdown", start, { once: true });
-    window.addEventListener("keydown", start, { once: true });
-    window.addEventListener("touchstart", start, { once: true });
-
-    return () => {
-      window.removeEventListener("pointerdown", start);
-      window.removeEventListener("keydown", start);
-      window.removeEventListener("touchstart", start);
-      if (audio) {
-        audio.master.gain.setTargetAtTime(0.0001, audio.context.currentTime, 0.4);
-        window.setTimeout(() => {
-          audio?.sources.forEach((source) => { try { source.stop(); } catch {} });
-          void audio?.context.close();
-        }, 1500);
-      }
-    };
+    }
   }, []);
 
-  return null;
+  useEffect(() => () => {
+    if (audioRef.current) stopPortfolioAudio(audioRef.current);
+    audioRef.current = null;
+  }, []);
+
+  const value = useMemo(() => ({ enabled, unavailable, toggle }), [enabled, unavailable, toggle]);
+  return <AmbientContext.Provider value={value}>{children}</AmbientContext.Provider>;
 }
