@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 
 export default function DigitalCore() {
   const [pointer, setPointer] = useState({ x: 50, y: 50 });
@@ -24,7 +24,7 @@ export default function DigitalCore() {
     <div
       id="digital-core"
       className="core-stage"
-      style={{ "--pointer-x": `${pointer.x}%`, "--pointer-y": `${pointer.y}%` } as React.CSSProperties}
+      style={{ "--pointer-x": `${pointer.x}%`, "--pointer-y": `${pointer.y}%` } as CSSProperties}
       role="img"
       aria-label="Abstract mechanical core made of concentric titanium rings, a central illuminated rotor, and precision components"
     >
