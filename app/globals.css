@@ -302,6 +302,14 @@ body { margin: 0; background: var(--ink); color: var(--paper); }
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]):not([data-theme="light"]) {
+    --c-bg: 250 250 252;
+    --c-surface: 255 255 255;
+    --c-border: 226 230 236;
+    --c-muted: 100 116 139;
+    --c-text: 15 23 42;
+    --c-accent: 14 116 144;
+    --c-accent2: 5 150 105;
+    color-scheme: light;
     --ink: #f0f1ee;
     --ink-soft: #e7eae8;
     --panel: #ffffff;
