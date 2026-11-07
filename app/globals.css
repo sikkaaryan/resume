@@ -889,3 +889,13 @@ body { margin: 0; background: var(--ink); color: var(--paper); }
  .site-footer__links { gap:14px; }
  .ambient-sound-toggle { right:auto; bottom:auto; padding:0; }
 }
+
+
+/* Intro footer controls: keep ambience toggle visible beside Skip Intro. */
+.intro-controls { display:flex; align-items:center; gap:24px; margin-left:auto; }
+.intro-controls .ambient-sound-toggle { color:rgba(220,233,238,.72); font:8px var(--mono); letter-spacing:.13em; }
+.intro-controls .ambient-sound-toggle:hover { color:#79d9e8; }
+@media(max-width:620px) {
+  .intro-controls { width:100%; justify-content:flex-end; gap:20px; order:2; }
+  .intro-bottom > span { margin-left:0; margin-right:auto; }
+}
