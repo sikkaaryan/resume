@@ -4,7 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import DigitalCore from "./DigitalCore";
 import { certifications, education, experience, featuredProjects, profile, skillGroups } from "@/lib/data";
 
-const navItems = [
+const experienceHighlights: Record<string, string[]> = {\n  "Aristocrat Technologies": [\n    "Develop production mobile game modules for Android and iOS using C#, TypeScript, and a Unity-based architecture.",\n    "Own product features across gameplay systems, UI flows, backend integrations, analytics, and production fixes.",\n    "Contributed to 5–6 shipped game modules, including Buffalo Link.",\n    "Built a reusable TypeScript game-template framework that reduced new-title development time by approximately 30%.",\n    "Develop internal AI-assisted workflows for code generation and automated quality checks.",\n    "Investigate production and QA issues while collaborating across engineering, QA, design, and product teams.",\n  ],\n  "Cavisson Systems Inc": [\n    "Enhanced enterprise ASP.NET MVC and ASP.NET Core applications, focusing on reliability and performance.",\n    "Applied Entity Framework and dependency-injection patterns to improve application architecture.",\n    "Built and maintained .NET applications backed by MSSQL and Oracle databases.",\n    "Performed load and performance testing with JMeter and collaborated through Git and GitLab.",\n  ],\n};\n\nconst navItems = [
   ["intro", "Overview", "01"],
   ["about", "About", "02"],
   ["experience", "Experience", "03"],
@@ -92,7 +92,7 @@ export default function PortfolioExperience() {
 
       <div className="portfolio-content">
         <section id="intro" className="hero-section">
-          <div className="hero-topline"><span>INDEPENDENT ENGINEERING PORTFOLIO</span><span>NEW DELHI, IN <i /> IST</span></div>
+          <div className="hero-topline"><span>INDEPENDENT ENGINEERING PORTFOLIO</span><span>NOIDA, IN <i /> IST</span></div>
           <div className="hero-layout">
             <div className="hero-copy">
               <p className="eyebrow"><span className="eyebrow-mark" /> SOFTWARE ENGINEER II <span className="eyebrow-divider">/</span> ARISTOCRAT TECHNOLOGIES</p>
@@ -135,7 +135,7 @@ export default function PortfolioExperience() {
                 <div className="timeline-body">
                   <div className="timeline-title"><div><h3>{job.company}</h3><p>{job.role} <span>·</span> {job.location}</p></div>{job.current && <span className="current-tag"><i /> CURRENT</span>}</div>
                   {job.blurb && <p className="job-blurb">{job.blurb}</p>}
-                  <ul>{job.bullets.slice(0, job.current ? 6 : 4).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+                  <ul>{(experienceHighlights[job.company] || job.bullets.slice(0, 4)).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
                   <div className="tag-row">{job.stack.map((item) => <span key={item}>{item}</span>)}</div>
                 </div>
               </article>
