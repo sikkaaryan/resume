@@ -5,6 +5,9 @@ import Avatar from "@/components/Avatar";
 import { education, skillGroups, certifications } from "@/lib/data";
 import { githubProjects } from "@/lib/github-projects";
 import { posts } from "@/lib/posts";
+import CinematicHero from "./CinematicHero";
+import InteractiveProjectGallery from "./InteractiveProjectGallery";
+import AnimatedCareerJourney from "./AnimatedCareerJourney";
 
 const careerHighlights = [
   "Build and maintain mobile game modules for Android and iOS.",
@@ -33,27 +36,7 @@ function PageIntro({ kicker, title, copy }: { kicker: string; title: ReactNode; 
 export function HomePage() {
   return (
     <SiteFrame section="HOME / OVERVIEW">
-      <section className="home-hero">
-        <div className="home-hero__copy">
-          <p className="page-eyebrow"><i /> SOFTWARE ENGINEER II · NOIDA, INDIA</p>
-          <h1>Hi, I’m Aryan.<br /><em>I build software.</em></h1>
-          <p className="home-lede">I work on mobile games, .NET applications, and tools that make development work a little easier.</p>
-          <div className="page-actions">
-            <Link className="button-primary" href="/projects">See my projects <span>↗</span></Link>
-            <Link className="text-link" href="/experience">Where I’ve worked <span>↗</span></Link>
-          </div>
-          <div className="home-facts">
-            <div><span>01</span><strong>Game development</strong><small>Android · iOS · Unity</small></div>
-            <div><span>02</span><strong>Application development</strong><small>C# · .NET · TypeScript</small></div>
-            <div><span>03</span><strong>Tools & automation</strong><small>Frameworks · Developer tools</small></div>
-          </div>
-        </div>
-        <div className="home-portrait-wrap">
-          <div className="home-portrait"><Avatar /></div>
-          <div className="portrait-caption"><span>ARYAN SIKKA</span><span>SOFTWARE ENGINEER</span></div>
-          <div className="portrait-coordinate">28° N / 77° E</div>
-        </div>
-      </section>
+      <CinematicHero />
 
       <section className="home-next">
         <div className="section-title-row"><div><p className="page-eyebrow">A FEW THINGS I’VE BUILT</p><h2>Selected work</h2></div><Link className="text-link" href="/projects">All projects ↗</Link></div>
@@ -90,24 +73,7 @@ export function ExperiencePage() {
   return (
     <SiteFrame section="EXPERIENCE / CAREER">
       <PageIntro kicker="WORK EXPERIENCE" title={<>The work,<br /><em>so far.</em></>} copy="A look at the teams I’ve worked with and the kind of work I’ve been doing." />
-      <div className="career-list">
-        <article className="career-entry">
-          <div className="career-dates"><span>OCT 2024 — PRESENT</span><i>CURRENT ROLE</i></div>
-          <div className="career-details">
-            <p className="career-company">ARISTOCRAT TECHNOLOGIES</p><h2>Software Engineer II</h2><p className="career-location">Noida, India</p>
-            <ul>{careerHighlights.map((item) => <li key={item}>{item}</li>)}</ul>
-            <div className="tag-row"><span>C#</span><span>TypeScript</span><span>Unity</span><span>Android</span><span>iOS</span><span>GitLab CI/CD</span></div>
-          </div>
-        </article>
-        <article className="career-entry">
-          <div className="career-dates"><span>JUL 2022 — OCT 2024</span><i>PREVIOUS ROLE</i></div>
-          <div className="career-details">
-            <p className="career-company">CAVISSON SYSTEMS INC.</p><h2>Software Engineer</h2><p className="career-location">Noida, India</p>
-            <ul>{cavissonHighlights.map((item) => <li key={item}>{item}</li>)}</ul>
-            <div className="tag-row"><span>C#</span><span>.NET Core</span><span>ASP.NET MVC</span><span>Entity Framework</span><span>MSSQL</span><span>Oracle</span><span>JMeter</span></div>
-          </div>
-        </article>
-      </div>
+      <AnimatedCareerJourney />
       <div className="experience-result"><span>ONE THING I’VE LEARNED</span><p>Shipping is only part of the job. The code also has to be supportable, testable, and understandable by the next person who works on it.</p></div>
       <div className="inline-cta"><span>See selected work and personal projects</span><Link href="/projects">View projects ↗</Link></div>
     </SiteFrame>
@@ -118,12 +84,7 @@ export function ProjectsPage() {
   return (
     <SiteFrame section="PROJECTS / SELECTED WORK">
       <PageIntro kicker="SELECTED WORK" title={<>A few projects<br /><em>worth a look.</em></>} copy="A mix of work from my day job and things I’ve built on my own. The professional work is described at a high level; the public repositories have more detail." />
-      <section className="project-feature-list" id="professional">
-        <div className="subsection-label">01 / PROFESSIONAL WORK</div>
-        <article className="feature-work"><div className="feature-work__number">01</div><div><p>ARISTOCRAT TECHNOLOGIES</p><h2>Mobile game development</h2><p>Development of production game modules for Android and iOS, working across gameplay features, game configuration, UI flows, and backend integration.</p><div className="tag-row"><span>C#</span><span>TypeScript</span><span>Unity</span><span>Mobile</span></div></div><span className="feature-work__side">PRODUCTION</span></article>
-        <article className="feature-work" id="framework"><div className="feature-work__number">02</div><div><p>INTERNAL DEVELOPMENT TOOLS</p><h2>Reusable game framework</h2><p>A shared game foundation with configurable components. It helped reduce repeated setup work and cut new-title development time by around 30%.</p><div className="tag-row"><span>TypeScript</span><span>Framework design</span><span>Reusable components</span></div></div><span className="feature-work__side">~30% LESS SETUP TIME</span></article>
-        <article className="feature-work"><div className="feature-work__number">03</div><div><p>PERSONAL / EXPERIMENTAL</p><h2>AI-assisted development workflows</h2><p>Small internal workflows exploring where code generation and automated checks can remove repetitive work. Details are kept high-level because the work is internal.</p><div className="tag-row"><span>AI tooling</span><span>Automation</span><span>Developer workflows</span></div></div><span className="feature-work__side">INTERNAL TOOLING</span></article>
-      </section>
+      <InteractiveProjectGallery />
       <section className="github-project-preview">
         <div className="section-title-row"><div><p className="page-eyebrow">PUBLIC REPOSITORIES</p><h2>Things I’ve built myself</h2></div><Link className="text-link" href="/github">All GitHub projects ↗</Link></div>
         <div className="github-card-grid">{githubProjects.slice(0, 3).map((project) => <article className="github-project-card" key={project.slug}><span>{project.kind}</span><h3>{project.name}</h3><p>{project.description}</p><Link href={`/github#${project.slug}`}>Project details ↗</Link></article>)}</div>
